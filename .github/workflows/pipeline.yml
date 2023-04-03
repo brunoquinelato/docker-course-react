@@ -1,0 +1,15 @@
+name: Build & Tests
+# run-name: ${{ github.actor }} started build
+# on: [push]
+on:
+  push:
+    brances:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -t bquinelato/react-test -f Dockerfile.dev .
+      - run: docker run -e CI=true bquinelato/react-test npm test
+      
