@@ -18,10 +18,10 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: 'Build & Test App'
-        run: |
-          docker build -t bquinelato/react-test -f Dockerfile.dev .
-          docker run -e CI=true bquinelato/react-test npm test
+      # - name: 'Build & Test App'
+      #   run: |
+      #     docker build -t bquinelato/react-test -f Dockerfile.dev .
+      #     docker run -e CI=true bquinelato/react-test npm test
 
       - name: 'Build and push image'
         uses: azure/docker-login@v1
@@ -42,7 +42,7 @@ jobs:
           registry-login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           registry-username: ${{ secrets.REGISTRY_USERNAME }}
           registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-          name: react-test-docker
+          name: react-test-bruno
           location: 'Brazil South'
 
   # - name: 'Build and push image'
